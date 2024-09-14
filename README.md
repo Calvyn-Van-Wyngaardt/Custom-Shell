@@ -1,8 +1,8 @@
 # Custom-Shell
-###### Creating a custom shell in C++
-
+### Creating a custom shell in C++
+This serves as an attempt to better understand how Linux executes commands
 ## Downloading the repo:
-###### Here are some ways to download the repo:
+Here are some ways to download the repo:
 
 #### 1) Git clone
 ```bash
@@ -57,4 +57,4 @@ For now, this serves only as a proof of concept and will still need to be rework
     ```
 
 
-###### Please note that this is still a work in progress and is far from completion
+###### ⚠️Please note that this is still a work in progress and is far from completion
