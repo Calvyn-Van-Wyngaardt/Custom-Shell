@@ -22,23 +22,25 @@ int main() {
         exit(EXIT_FAILURE);
     } 
     else if (c_id > 0) {
+        //Parent Process
         while (waitpid(c_id, &status, WNOHANG) == 0) { }
+        if (WIFEXITED(status) && WEXITSTATUS(status) == 0) {
+            std::cout << "Command successfully executed! :D" << std::endl;
+        }
     }
     else {
+        //Child Process
         //Command building...
         std::string commandStr = "/usr/bin/" + command;
         char* commandChar = &commandStr[0];
-        char* argChar = &arg[0];
+        char* argChar = arg.empty() ? nullptr : &arg[0];
         char* const args[] = {commandChar, argChar, nullptr};
 
         if (execv(commandChar, args) == -1) {
             std::string errMsg = std::string("Error executing command: ") + commandChar;
             perror(errMsg.c_str());
-            return 1;
+            exit(EXIT_FAILURE);
         }
-
-        //Write operations...
-        std::cout << "Command successsfully executed! :D" << std::endl;
     }
 
     return 0;
